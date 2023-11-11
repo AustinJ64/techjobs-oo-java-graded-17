@@ -30,10 +30,48 @@ public class JobTest {
     }
 
     @Test
-    public void testJobsForEQuality() {
+    public void testJobsForEquality() {
         Job job1 = new Job("Shoplifter", new Employer("Myself"), new Location("California"), new PositionType("Criminal"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Shoplifter", new Employer("Myself"), new Location("California"), new PositionType("Criminal"), new CoreCompetency("Persistence"));
         assertNotEquals(job1, job2);
     }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job1 = new Job();
+        String myString = job1.toString();
+        String first = myString.substring(0,2);
+        String last = myString.substring(myString.length()-2);
+        assertEquals(first , System.lineSeparator());
+        assertEquals(last , System.lineSeparator());
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+    String expected = System.lineSeparator();
+        expected += "ID: 1"+System.lineSeparator();
+        expected += "Name: Shoplifter"+System.lineSeparator();
+        expected += "Employer: Myself"+System.lineSeparator();
+        expected += "Location: California"+System.lineSeparator();
+        expected += "Position Type: Criminal"+System.lineSeparator();
+        expected += "Core Competency: Persistence"+System.lineSeparator();
+        expected += System.lineSeparator();
+        Job job1 = new Job("Shoplifter", new Employer("Myself"), new Location("California"), new PositionType("Criminal"), new CoreCompetency("Persistence"));
+        assertEquals(job1.toString(), expected);
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        String expected = System.lineSeparator();
+        expected += "ID: 1"+System.lineSeparator();
+        expected += "Name: Data not available"+System.lineSeparator();
+        expected += "Employer: Data not available"+System.lineSeparator();
+        expected += "Location: Data not available"+System.lineSeparator();
+        expected += "Position Type: Data not available"+System.lineSeparator();
+        expected += "Core Competency: Data not available"+System.lineSeparator();
+        expected += System.lineSeparator();
+
+        Job job1 = new Job();
+        assertEquals(job1.toString(), expected);
+    }
 }

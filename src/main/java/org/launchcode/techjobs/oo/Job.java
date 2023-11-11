@@ -92,5 +92,32 @@ public class Job {
     public int getId() {
         return id;
     }
+
+    public String toString() {
+
+        String name = (this.name == null || this.name.isEmpty() ? "Data not available" : this.name);
+        String myEmployer = (this.employer == null || this.employer.getValue().isEmpty() ? "Data not available" : this.employer.getValue());
+        String myLocation = (this.location == null || this.location.getValue().isEmpty() ? "Data not available" : this.location.getValue());
+        String myPosition = (this.positionType == null || this.positionType.getValue().isEmpty() ? "Data not available" : this.positionType.getValue());
+        String myCoreCompetency = (this.coreCompetency == null || this.coreCompetency.getValue().isEmpty() ? "Data not available" : this.coreCompetency.getValue());
+
+        String retVal = "\n";
+        retVal += "ID: " + id + "\n";
+        retVal += "Name: " + name + "\n";
+        retVal += "Employer: " + myEmployer + "\n";
+        retVal += "Location: " + myLocation + "\n";
+        retVal += "Position Type: " + myPosition + "\n";
+        retVal += "Core Competency: " + myCoreCompetency + "\n";
+
+//        String retVal = System.lineSeparator();
+//        retVal += "ID: " + id + System.lineSeparator();
+//        retVal += "Name: " + name + System.lineSeparator();
+//        retVal += "Employer: " + myEmployer + System.lineSeparator();
+//        retVal += "Location: " + myLocation + System.lineSeparator();
+//        retVal += "Position Type: " + myPosition + System.lineSeparator();
+//        retVal += "Core Competency: " + myCoreCompetency + System.lineSeparator();
+
+        return retVal;
+    }
 }
 
